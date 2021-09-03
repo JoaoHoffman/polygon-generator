@@ -1,6 +1,6 @@
 <?php
 
-    function poly_ch($s, $l, $r, $cl = "") { 
+    function poly_ch($s, $l, $r) { 
         //
         //$s -> size int
         //$l -> sides int
@@ -13,7 +13,7 @@
 
 
 
-        for($ang = $ca; $ang <= 360; $ang = $ang + $ca) {
+        for($ang = $ca; $ang < 360 + $ca; $ang = $ang + $ca) {
             $sin = sin(deg2rad($ang));
             $cos = cos(deg2rad($ang));
 
@@ -26,10 +26,11 @@
                 $coorXY = $coorX." ".$coorY.", ";
             }
             array_push($pnts, $coorXY);
+            echo "ANGULO: $ang, SENO: $sin, COSSENO: $cos <hr><br>";
         }
 
-            echo "<svg class=\"$cl\" width=\"".$s."px\" height=\"".$s."px\">
-                <polygon points=\"";
+            echo "<svg width=\"".$s."px\" height=\"".$s."px\">
+            <polygon points=\"";
 
                 for($i = 0; $i <= count($pnts); $i++) {
                     echo $pnts[$i];
@@ -43,8 +44,8 @@
 
     }
 
-    poly_ch(200, 3, 40, 0);
-    poly_ch(200, 4, 40, 0);
-    poly_ch(200, 5, 40, 0);
+    poly_ch(200, 3, 40);
+    poly_ch(200, 7, 40);
+    poly_ch(200, 12, 40);
 
 ?>
